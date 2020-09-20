@@ -32,9 +32,10 @@ main(void)
         }
     }
 
-    print_matrix(n, n + 1, a);
     
-    gauss_elim_wo_m_el(n, n + 1, a);
+    int ret = gauss_elim_wo_m_el(n, n + 1, a);
+
+    printf("%d\n", ret);
 
     print_matrix(n, n + 1, a);
 
