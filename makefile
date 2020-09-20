@@ -16,3 +16,4 @@ program: main.o gauss.o matrix_io.o
 	gcc -o program main.o gauss.o matrix_io.o -lm
 	rm main.o
 	rm gauss.o
+	rm matrix_io.o
