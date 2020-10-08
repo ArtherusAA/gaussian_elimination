@@ -8,8 +8,8 @@ int
 main(void)
 {
     double **a;
-    int n;
-    scanf("%d", &n);
+    int n, m;
+    scanf("%d%d", &n, &m);
 
 
     a = malloc(sizeof(double *) * n);
@@ -18,7 +18,7 @@ main(void)
         return 1;
     }
     for (int i = 0; i < n; i++) {
-        a[i] = malloc(sizeof(double) * (n + 1));
+        a[i] = malloc(sizeof(double) * (m));
         if (!a[i]) {
             fprintf(stderr, "Memory allocation error\n");
             return 1;
@@ -27,17 +27,17 @@ main(void)
 
 
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j <= n; j++) {
+        for (int j = 0; j < m; j++) {
             scanf("%lf", &a[i][j]);
         }
     }
 
     
-    int ret = gauss_elim_wo_m_el(n, n + 1, a);
+    int ret = gauss_elim_wo_m_el(n, m, a);
 
     printf("%d\n", ret);
 
-    print_matrix(n, n + 1, a);
+    print_matrix(n, m, a);
 
     for (int i = 0; i < n; i++) {
         free(a[i]);

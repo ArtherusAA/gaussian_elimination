@@ -1,11 +1,17 @@
-.PHONY: all clean
+.PHONY: all clean test
 
 all: program
 
 clean:
-	rm -rf program *.o
+	rm -rf program check verdict *.o
 
+test: check verdict
 
+verdict:
+	gcc -o verdict verdict.c -lm
+
+check: check.c
+	gcc -o check check.c
 matrix_io.o: matrix_io.h matrix_io.c
 	gcc -c -o matrix_io.o matrix_io.c 
 gauss.o: gauss.h gauss.c matrix_io.h
