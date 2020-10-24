@@ -9,8 +9,8 @@
  * in case of success. If n > m or the most left n x n submatrix's
  * determinant is less than 0, it returns 0.
  */ 
-int gauss_elim_wo_m_el(int n, int m, double **mat);
-int gauss_elim(int n, int m, double **mat);
+double gauss_elim_wo_m_el(int n, int m, double **mat);
+double gauss_elim(int n, int m, double **mat);
 
 #endif
 

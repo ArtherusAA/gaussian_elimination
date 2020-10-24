@@ -6,11 +6,11 @@ static const double eps = 1e-4;
 int
 main(void)
 {
-    int diff;
-    scanf("%d", &diff);
-    if (diff) {
+    double diff;
+    scanf("%lf", &diff);
+    if (fabs(diff) >= eps) {
         printf("-------------------------- Test Failed:\n");
-        printf("Whether the matrix can be proccessed using gaussian elimination was not determined correctly\n");
+        printf("Determinant is not correct, difference is %lf\n", diff);
         return 0;
     }
     double d;

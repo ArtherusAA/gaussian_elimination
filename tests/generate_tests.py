@@ -2,7 +2,7 @@ import numpy as np
 import random
 
 def generate_random_matrix(n, m):
-    arr = [[random.uniform(-10, 10) for j in range(m)]
+    arr = [[random.uniform(-1.0, 1.0) for j in range(m)]
             for i in range(n)]
     return np.array(arr)
 
@@ -22,10 +22,8 @@ def main():
         m = n + random.randint(1, 5)
         mat = generate_random_matrix(n, m)
         det = np.linalg.det(square_matrix(mat))
-        if abs(det) < eps:
-            det = 0
-        else:
-            det = 1
+        if abs(det) > 1000000:
+            print('too big determinant on test {}'.format(i))
         g.write('{}'.format(det))
         f.write('{} {}\n'.format(n, m))
         for j in range(n):

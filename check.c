@@ -5,8 +5,8 @@
 int
 main(void)
 {
-    double **a, **b;
-    int n, m, answer_exists, target_answer_exists;
+    double **a, **b, det, target_det;
+    int n, m;
     scanf("%d%d", &n, &m);
 
 
@@ -43,7 +43,7 @@ main(void)
         }
     }
     
-    scanf("%d", &answer_exists);
+    scanf("%lf", &det);
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -52,9 +52,9 @@ main(void)
     }
 
     
-    scanf("%d", &target_answer_exists);
+    scanf("%lf", &target_det);
 
-    printf("%d\n", target_answer_exists - answer_exists);
+    printf("%lf\n", target_det - det);
 
     for (int i = n; i < m; i++) {
         for (int j = 0; j < n; j++) {

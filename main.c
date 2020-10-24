@@ -33,9 +33,9 @@ main(void)
     }
 
     
-    int ret = gauss_elim_wo_m_el(n, m, a);
+    double ret = gauss_elim_wo_m_el(n, m, a);
 
-    printf("%d\n", ret);
+    printf("%lf\n", ret);
 
     print_matrix(n, m, a);
 
