@@ -3,6 +3,14 @@
 
 const double EPS = 1e-9;
 
+int gauss_elim(int n, int m, double **mat)
+{
+    if (n > m) {
+        return 0;
+    }
+    return 0;
+}
+
 int gauss_elim_wo_m_el(int n, int m, double **mat)
 {
     if (n > m) {
@@ -11,19 +19,21 @@ int gauss_elim_wo_m_el(int n, int m, double **mat)
     // forward elimination
     for (int i = 0; i < n; i++) {
         // find first non-zero element
-        int j = i, flag = 0;
-        for (; j < n && !flag; j++) {
-            if (fabs(mat[j][i]) >= EPS) {
-                flag = 1;
+        int j = i, it = i;
+        double mx = fabs(mat[i][i]);
+        for (; j < n; j++) {
+            if (fabs(mat[j][i]) >= mx) {
+                it = j;
+                mx = fabs(mat[j][i]);
             }
         }
-        if (!flag) {
+        if (mx < EPS) {
             return 0;
         }
         j--;
         if (i != j) {
-            double *tmp = *(mat + j);
-            *(mat + j) = *(mat + i);
+            double *tmp = *(mat + it);
+            *(mat + it) = *(mat + i);
             *(mat + i) = tmp;
         }
         double c = mat[i][i];

@@ -10,6 +10,7 @@
  * determinant is less than 0, it returns 0.
  */ 
 int gauss_elim_wo_m_el(int n, int m, double **mat);
+int gauss_elim(int n, int m, double **mat);
 
 #endif
 
