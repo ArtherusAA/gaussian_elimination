@@ -2,4 +2,5 @@ program
 check
 verdict
 *.o
+.*.swp
 
