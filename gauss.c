@@ -3,6 +3,39 @@
 
 const double EPS = 1e-9;
 
+double determinant(int n, double **mat) 
+{
+    return gauss_elim_wo_m_el(n, n, mat);
+}
+
+int reverse(int n, double **mat, double **reverse) 
+{
+    double **new_mat = malloc(sizeof(double *) * n);
+    if (new_mat == NULL) {
+        return -1;
+    }
+    for (int i = 0; i < n; i++) {
+        new_mat[i] = malloc(sizeof(double) * 2 * n);
+        if (new_mat[i] == NULL) {
+            return -1;
+        }
+        memcpy(new_mat[i], mat[i], n * sizeof(double));
+        for (int j = n; j < 2 * n; j++) {
+            new_mat[i][j] = (j == i + n ? 1 : 0);
+        }
+    }
+    double det = gauss_elim_wo_m_el(n, 2 * n, new_mat);
+    if (fabs(det) < EPS) {
+        return 0;
+    }
+    for (int i = 0; i < n; i++) {
+        memcpy(reverse[i], new_mat[i] + n, sizeof(double) * n);
+        free(new_mat[i]);
+    }
+    free(new_mat);
+    return 1;
+}
+
 double gauss_elim(int n, int m, double **mat)
 {
     if (n > m) {
@@ -10,8 +43,6 @@ double gauss_elim(int n, int m, double **mat)
     }
     return 0;
 }
-
-
 
 double gauss_elim_wo_m_el(int n, int m, double **mat)
 {
